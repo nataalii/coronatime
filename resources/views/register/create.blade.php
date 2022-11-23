@@ -16,33 +16,54 @@
                   @csrf
                   <div class="space-y-1">
                     <label for="username" class="block text-xs font-bold text-dark/100">{{ __('Username') }}</label>
-                    <div class="mt-1">
-                      <input id="username" name="username" type="text" value="{{old('username') }} "placeholder="Enter unique Username" class="block w-full appearance-none rounded-md border border-gray-300 px-3 h-14 placeholder-gray-400 shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary sm:text-sm">
+                    <div class="mt-1 relative">
+                      <input id="username" name="username" type="text" value="{{old('username') }} "placeholder="Enter unique Username"
+                       class="block w-full appearance-none rounded-md border px-3 h-14
+                       placeholder-gray-400 shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary sm:text-sm
+                        {{  !$errors->any() ? "border-gray-300" : ($errors->has('username') ? "border-system/error" : "border-system/success") }}">
+
                     </div>
-                    <p class=" -mt-3 text-sm text-dark/60">Username should be unique, min 3 symbols </p>
-                    <x-error name=username/>
+                    <x-success name=username/>
+                    <x-error name=username/> 
+                    
                   </div>
                   <div>
                     <label for="email" class="block text-xs font-bold text-dark/100 ">{{ __('Email') }}</label>
                     <div class="mt-1">
-                      <input id="email" name="email" type="email"  value="{{ old('email') }}" placeholder="Enter your email"  class=" block w-full appearance-none rounded-md border border-gray-300 px-3 h-14 placeholder-gray-400 shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary sm:text-sm">
+                      <input id="email" name="email" type="email"  value="{{ old('email') }}" placeholder="Enter your email" 
+                       class=" block w-full appearance-none rounded-md border border-gray-300 px-3 h-14 
+                       placeholder-gray-400 shadow-xs focus:border-brand/primary focus:outline-none
+                        focus:ring-brand/primary sm:text-sm
+                        {{  !$errors->any() ? "border-gray-300" : ($errors->has('email') ? "border-system/error" : "border-system/success") }}">
+
                     </div>
+                    <x-success name=email/>
                     <x-error name=email/>
                   </div>
 
                   <div class="space-y-1">
                     <label for="password" class="block text-xs font-bold text-dark/100">{{ __('Password') }}</label>
                     <div class="mt-1">
-                      <input id="password" name="password" type="password" placeholder="Fill in password" class="block w-full appearance-none rounded-md border border-gray-300 px-3 h-14 placeholder-gray-400 shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary sm:text-sm">
+                      <input id="password" name="password" type="password" placeholder="Fill in password" 
+                      class="block w-full appearance-none rounded-md border border-gray-300 px-3 h-14 placeholder-gray-400 
+                      shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary sm:text-sm
+                      {{  !$errors->any() ? "border-gray-300" : ($errors->has('password') ? "border-system/error" : "border-system/success") }}">
+
                     </div>
+                    <x-success name=password/>
                     <x-error name=password/>
                   </div>
 
                   <div class="space-y-1">
                     <label for="password_confirmation" class="block text-xs font-bold text-dark/100">{{ __('Repeat password') }}</label>
                     <div class="mt-1">
-                      <input id="password_confirmation" name="password_confirmation" type="password" placeholder="Repeat password" class="block w-full appearance-none rounded-md border border-gray-300 px-3 h-14 placeholder-gray-400 shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary sm:text-sm">
+                      <input id="password_confirmation" name="password_confirmation" type="password" placeholder="Repeat password"
+                       class="block w-full appearance-none rounded-md border border-gray-300 px-3 h-14 placeholder-gray-400 
+                       shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary sm:text-sm
+                       {{  !$errors->any() ? "border-gray-300" : ($errors->has('password') ? "border-system/error" : "border-system/success") }}">
+
                     </div>
+                    <x-success name=password/>
                     <x-error name=password/>
 
                   </div>

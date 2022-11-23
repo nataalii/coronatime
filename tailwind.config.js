@@ -14,7 +14,8 @@ module.exports = {
         'dark/60': '#808189',
         'dark/100': '#010414',
         'brand/primary': '#2029F3',
-        'system/error': '#CC1E1E'
+        'system/error': '#CC1E1E',
+        'system/success': '#249E2C'
       },
       
       fontFamily: {
