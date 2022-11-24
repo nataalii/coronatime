@@ -8,11 +8,6 @@ use Illuminate\Auth\Events\Registered;
 
 class RegistrationController extends Controller
 {
-	public function create()
-	{
-		return view('register.create');
-	}
-
 	public function store(UserStoreRequest $request)
 	{
 		$validated = $request->validated();
@@ -22,15 +17,5 @@ class RegistrationController extends Controller
 		$user->save();
 
 		return redirect(route('verification.notice'));
-	}
-
-	public function confirm()
-	{
-		return view('register.confirm');
-	}
-
-	public function verify()
-	{
-		return view('register.verify');
 	}
 }
