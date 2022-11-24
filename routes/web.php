@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'register.create')->name('register.create');
+Route::post('/', [RegistrationController::class, 'store'])->name('register.store');
+
+Route::view('/verify', 'register.verify')->name('register.verify');
+Route::view('/email/verify', 'register.confirm')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'show'])->middleware('auth')->name('verification.verify');
