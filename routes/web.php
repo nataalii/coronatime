@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'register.create')->name('register.create');
-Route::post('/', [RegistrationController::class, 'store'])->name('register.store');
+Route::view('/register', 'register.create')->name('register.create');
+Route::post('/register', [RegistrationController::class, 'store'])->name('register.store');
 
 Route::view('/verify', 'register.verify')->name('register.verify');
 Route::view('/email/verify', 'register.confirm')->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'show'])->middleware('auth')->name('verification.verify');
+
+Route::view('/', 'sessions.login')->name('login.create');
