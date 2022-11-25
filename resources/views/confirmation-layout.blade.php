@@ -7,12 +7,12 @@
     <title>Coronatime</title>
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="font-inter">
     <div class="flex justify-top flex-col h-full w-screen mt-10">
         <div>
             <img src="/images/coronatime.svg" alt="coronatime-image" class="m-auto">
         </div>
-        <div class="text-center">
+        <div class="text-center m-auto">
             @yield('slot')
         </div>
     </div>

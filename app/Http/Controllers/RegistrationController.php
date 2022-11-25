@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\user\UserStoreRequest;
+use App\Http\Requests\user\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 
 class RegistrationController extends Controller
 {
-	public function store(UserStoreRequest $request)
+	public function store(StoreUserRequest $request)
 	{
 		$validated = $request->validated();
 
