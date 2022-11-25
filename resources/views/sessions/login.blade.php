@@ -7,27 +7,26 @@
     <h3 class="text-xl text-dark/60 mt-4">{{ __('Welcome back! Please enter your details') }}</h3>
  </div>
  <div>
- <form  method="POST" action="{{ route('register.store') }}" class="space-y-6 w-450px">
+ <form  method="POST" action="{{ route('login.store') }}" class="space-y-6 w-450px">
    @csrf
-   <div class="space-y-1">
-     <label for="username" class="block text-xs font-bold text-dark/100">{{ __('Username') }}</label>
-     <div class="mt-1 relative">
-       <input id="username" name="username" type="text" value="{{old('username') }} "placeholder="Enter unique Username"
+    <div class="space-y-1">
+      <label for="username" class="block text-xs font-bold text-dark/100">{{ __('Username') }}</label>
+      <div class="mt-1 relative">
+        <input id="username" name="username" type="username"  value="{{ old('username') }}" placeholder="Enter unique username" 
         class="block w-full appearance-none rounded-md border px-3 h-14
-        placeholder-gray-400 shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary sm:text-sm focus:shadow-input
-         {{  !$errors->any() ? " border-dark/20" : ($errors->has('username') ? "border-system/error" : "border-system/success") }}">
-
-     </div>
-     <x-success name=username/>
-     <x-error name=username/> 
-     
-   </div>
+        placeholder-gray-400 shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary focus:ring-0 sm:text-sm focus:shadow-input
+        {{  !$errors->any() ? " border-dark/20" : ($errors->has('username') ? "border-system/error" : "border-system/success") }}">
+      </div>
+      <x-success name=username/>
+      <x-error name=username/> 
+      
+    </div>
    <div class="space-y-1">
      <label for="password" class="block text-xs font-bold text-dark/100">{{ __('Password') }}</label>
      <div class="mt-1">
        <input id="password" name="password" type="password" placeholder="Fill in password" 
        class="block w-full appearance-none rounded-md border px-3 h-14 placeholder-gray-400 
-       shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary sm:text-sm focus:shadow-input
+       shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary focus:ring-0 sm:text-sm focus:shadow-input
        {{  !$errors->any() ? "border-dark/20" : ($errors->has('password') ? "border-system/error" : "border-system/success") }}">
 
      </div>
