@@ -12,7 +12,7 @@ class SessionsController extends Controller
 		{
 			session()->regenerate();
 
-			return redirect()->route('worldwide');
+			return redirect(route('worldwide'));
 		}
 	}
 

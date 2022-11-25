@@ -1,7 +1,6 @@
 @extends('login-layout')
 @section('content')
 
-
 <div class="-mt-20">
     <h2 class=" font-black text-3xl tracking-tight text-gray-900">{{ __('Welcome back') }}</h2>
     <h3 class="text-xl text-dark/60 mt-4">{{ __('Welcome back! Please enter your details') }}</h3>
@@ -11,39 +10,20 @@
    @csrf
     <div class="space-y-1">
       <label for="username" class="block text-xs font-bold text-dark/100">{{ __('Username') }}</label>
-      <div class="mt-1 relative">
-        <input id="username" name="username" type="username"  value="{{ old('username') }}" placeholder="Enter unique username" 
-        class="block w-full appearance-none rounded-md border px-3 h-14
-        placeholder-gray-400 shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary focus:ring-0 sm:text-sm focus:shadow-input
-        {{  !$errors->any() ? " border-dark/20" : ($errors->has('username') ? "border-system/error" : "border-system/success") }}">
-      </div>
+      <x-input name=username type=text placeholder="Enter unique username" err=username/>
       <x-success name=username/>
       <x-error name=username/> 
       
     </div>
    <div class="space-y-1">
      <label for="password" class="block text-xs font-bold text-dark/100">{{ __('Password') }}</label>
-     <div class="mt-1">
-       <input id="password" name="password" type="password" placeholder="Fill in password" 
-       class="block w-full appearance-none rounded-md border px-3 h-14 placeholder-gray-400 
-       shadow-xs focus:border-brand/primary focus:outline-none focus:ring-brand/primary focus:ring-0 sm:text-sm focus:shadow-input
-       {{  !$errors->any() ? "border-dark/20" : ($errors->has('password') ? "border-system/error" : "border-system/success") }}">
-
-     </div>
+     <x-input name=password type=password placeholder="Fill in password" err=password/>
      <x-success name=password/>
      <x-error name=password/>
    </div>
 
-
    <div class="flex items-center justify-between mb-4">
-      <div>
-        <input id="default-checkbox" type="checkbox" name="remember_me" class="w-5 h-5 rounded border-dark/20 checked:bg-system/success "> 
-        <label for="default-checkbox" class="ml-2 text-sm font-medium text-dark/100 dark:text-gray-300">Remember this device</label>
-      </div>
-
-      <span>
-        <a href="" class=" text-brand/primary text-sm font-bold">Forgot password?</a>
-      </span>
+      <x-checkbox/>
    </div>
 
    <div>

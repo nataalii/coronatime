@@ -2,4 +2,4 @@
     class="font-semibold text-blue-50 ml-6">
        @csrf
        <button type="submit">{{ __('logout') }}</button>
-   </form>
+</form>
