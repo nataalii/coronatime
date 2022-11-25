@@ -9,14 +9,14 @@
      <form  method="POST" action="{{ route('login.store') }}" class=" space-y-10 w-450px text-left">
        @csrf
        <div class="space-y-1">
-            <label for="password" class="block text-xs font-bold text-dark/100">{{ __('New Password') }}</label>
+            <label for="password" class="block text-xs font-bold text-dark-100">{{ __('New Password') }}</label>
             <x-input name=password type="password" placeholder="Enter new Password" err=password/>
             <x-success name=password/>
             <x-error name=password/>
        </div>
   
       <div class="space-y-1 mb-4">
-        <label for="password_confirmation" class="block text-xs font-bold text-dark/100">{{ __('Repeat password') }}</label>
+        <label for="password_confirmation" class="block text-xs font-bold text-dark-100">{{ __('Repeat password') }}</label>
         <x-input name=password_confirmation type=password placeholder="Repeat Password" err=password />
         <x-success name=password/>
         <x-error name=password/>

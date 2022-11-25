@@ -9,12 +9,12 @@ module.exports = {
     extend: {
       colors: {
         'grn': "#0FBA68",
-        'dark/20': "#E6E6E7",
-        'dark/60': '#808189',
-        'dark/100': '#010414',
-        'brand/primary': '#2029F3',
-        'system/error': '#CC1E1E',
-        'system/success': '#249E2C'
+        'dark-20': "#E6E6E7",
+        'dark-60': '#808189',
+        'dark-100': '#010414',
+        'brand-primary': '#2029F3',
+        'system-error': '#CC1E1E',
+        'system-success': '#249E2C'
       },
       boxShadow: {
         'input': '3px 3px 5px 5px #DBE8FB',
