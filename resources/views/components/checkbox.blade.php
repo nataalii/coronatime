@@ -3,5 +3,5 @@
     <label for="default-checkbox" class="ml-2 text-sm font-medium text-dark-100">Remember this device</label>
   </div>
   <span>
-    <a href="" class=" text-brand-primary text-sm font-bold">Forgot password?</a>
+    <a href="{{ route('password.request') }}" class=" text-brand-primary text-sm font-bold">Forgot password?</a>
 </span>

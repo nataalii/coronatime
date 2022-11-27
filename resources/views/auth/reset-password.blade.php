@@ -6,8 +6,16 @@
         <h2 class=" font-black text-3xl tracking-tight text-gray-900">{{ __('Reset Password') }}</h2>
      </div>
      <div>
-     <form  method="POST" action="{{ route('login.store') }}" class=" space-y-10 w-450px text-left">
+     <form method="POST" action="{{ route('password.update') }}" class=" space-y-10 w-450px text-left">
        @csrf
+       <input type="hidden" name="token" value="{{ $token }}">
+       <div class="hidden">
+          <label for="email" class="block text-xs font-bold text-dark-100">{{ __('Email') }}</label>
+          <div>
+            <input id="email" name="email" type="email" value="{{ $email}}" />
+          </div>
+       </div>
+
        <div class="space-y-1">
             <label for="password" class="block text-xs font-bold text-dark-100">{{ __('New Password') }}</label>
             <x-input name=password type="password" placeholder="Enter new Password" err=password/>
@@ -23,7 +31,7 @@
       </div>
         <div>
             <button type="submit" class=" mt-5 h-14 flex w-full justify-center rounded-md bg-grn py-2 px-4 font-bold pt-4 text-white shadow-xs focus:outline-none focus:ring-2 ">
-              <a href="">{{__("SAVE CHANGES")  }}</a>
+              <a >{{__("SAVE CHANGES")  }}</a>
             </button>
           </div>
       </form>  

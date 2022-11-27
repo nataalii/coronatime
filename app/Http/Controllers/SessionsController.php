@@ -8,10 +8,9 @@ class SessionsController extends Controller
 {
 	public function store(StoreSessionsRequest $request)
 	{
-		if (auth()->attempt($request->validated()))
+		if ($request->validated())
 		{
 			session()->regenerate();
-
 			return redirect(route('worldwide'));
 		}
 	}
