@@ -11,11 +11,10 @@ class SessionsController extends Controller
 {
 	public function store(StoreSessionsRequest $request)
 	{
-		$remember = ($request->has('remember_me')) ? true : false;
 		$user = User::where('username', $request->username)->first();
 		$isPasswordTrue = Hash::check($request->password, $user->password);
 
-		if (auth()->attempt($request->only(['username', 'password']), $remember) && $isPasswordTrue)
+		if (auth()->attempt($request->only(['username', 'password']), $request->remember_me) && $isPasswordTrue)
 		{
 			session()->regenerate();
 			return redirect(route('worldwide'));
