@@ -1,6 +1,7 @@
 @vite('resources/css/app.css')
 <!DOCTYPE html>
 <html lang="en">
+<title>Coronatime</title>
 <body class="font-inter">
     <img src="/images/coronatime.svg" alt="coronatime-image" class="absolute mx-24 mt-9">
     <div class="flex h-full">

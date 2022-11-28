@@ -38,7 +38,7 @@
 
       <div>
         <button type="submit" class=" h-14 flex w-full justify-center rounded-md bg-grn py-2 px-4 font-bold pt-4 text-white shadow-xs focus:outline-none focus:ring-2 ">
-          <a>{{__("SIGN UP")  }}</a>
+          {{__("SIGN UP")  }}
         </button>
       </div>
       <p class=" text-center text-dark-60">Already have an account? 
