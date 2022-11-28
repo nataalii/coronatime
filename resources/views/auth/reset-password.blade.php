@@ -31,7 +31,7 @@
       </div>
         <div>
             <button type="submit" class=" mt-5 h-14 flex w-full justify-center rounded-md bg-grn py-2 px-4 font-bold pt-4 text-white shadow-xs focus:outline-none focus:ring-2 ">
-              <a >{{__("SAVE CHANGES")  }}</a>
+              {{__("SAVE CHANGES")  }}
             </button>
           </div>
       </form>  

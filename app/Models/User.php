@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-// use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -38,10 +37,5 @@ class User extends Authenticatable implements MustVerifyEmail
 	public function sendEmailVerificationNotification()
 	{
 		$this->notify(new VerifyEmail);
-	}
-
-	public function markEmailAsVerified()
-	{
-		$this->attributes['email_verified_at'] = now();
 	}
 }

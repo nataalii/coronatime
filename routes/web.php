@@ -17,17 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::view('/', 'sessions.login')->name('login.create');
-Route::post('login', [SessionsController::class, 'store'])->name('login.store');
-Route::post('logout', [SessionsController::class, 'destroy'])->name('logout');
+Route::post('login', [SessionsController::class, 'store'])->name('login.store')->middleware('guest');
+Route::post('logout', [SessionsController::class, 'destroy'])->name('logout')->middleware('auth');
 
 Route::view('register', 'register.create')->name('register.create');
 Route::post('register', [RegistrationController::class, 'store'])->name('register.store');
 
 //email verification
-Route::view('verify', 'register.verify')->name('register.verify');
-Route::view('email/verify', 'register.confirm')->name('verification.notice');
+Route::view('verify', 'register.confirm')->name('register.verify');
+Route::view('email/verify', 'register.verify')->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'show'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'show'])->middleware(['verified'])->name('verification.verify');
 
 //reset password
 Route::view('forgot-password', 'auth.request')->middleware('guest')->name('password.request');

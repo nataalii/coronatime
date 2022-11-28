@@ -28,7 +28,7 @@
 
    <div>
      <button type="submit" class=" mt-5 h-14 flex w-full justify-center rounded-md bg-grn py-2 px-4 font-bold pt-4 text-white shadow-xs focus:outline-none focus:ring-2 ">
-       <a href="">{{__("LOG IN")  }}</a>
+       {{__("LOG IN")  }}
      </button>
    </div>
    <p class=" text-center text-dark-60">Don’t have and account?
