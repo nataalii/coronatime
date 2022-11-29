@@ -24,10 +24,10 @@ Route::view('register', 'register.create')->name('register.create');
 Route::post('register', [RegistrationController::class, 'store'])->name('register.store');
 
 //email verification
-Route::view('verify', 'register.confirm')->name('register.verify');
-Route::view('email/verify', 'register.verify')->name('verification.notice');
+Route::view('verify', 'register.verify')->name('register.verify');
+Route::view('email/verify', 'register.confirm')->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'show'])->middleware(['verified'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'show'])->name('verification.verify');
 
 //reset password
 Route::view('forgot-password', 'auth.request')->middleware('guest')->name('password.request');
@@ -37,4 +37,4 @@ Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showRese
 Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.update');
 
 //admin
-Route::view('home', 'dashboard.landing-worldwide')->name('worldwide');
+Route::view('home', 'dashboard.landing-worldwide')->name('worldwide')->middleware('auth');

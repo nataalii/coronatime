@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class VerificationController extends Controller
 {
-	public function show(EmailVerificationRequest $request)
+	public function show(Request $request)
 	{
-		$request->email_verified_at = Carbon::now();
-		$request->fulfill();
+		$user = User::where('id', $request->id)->first();
+		if (Hash::check($user->email, $request->email))
+		{
+			$user->email_verified_at = Carbon::now();
+			$user->save();
+		}
 
-		return view('register.verify');
+		return redirect(route('register.verify'));
 	}
 }
