@@ -16,25 +16,31 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/', 'sessions.login')->name('login.create');
-Route::post('login', [SessionsController::class, 'store'])->name('login.store')->middleware('guest');
-Route::post('logout', [SessionsController::class, 'destroy'])->name('logout')->middleware('auth');
 
-Route::view('register', 'register.create')->name('register.create');
-Route::post('register', [RegistrationController::class, 'store'])->name('register.store');
+Route::redirect('/', '/en');
 
-//email verification
-Route::view('verify', 'register.confirm')->name('register.verify');
-Route::view('email/verify', 'register.verify')->name('verification.notice');
+Route::group(['prefix' => '{language}'], function () {
+	Route::view('/', 'sessions.login')->name('login.create');
 
-Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'show'])->middleware(['verified'])->name('verification.verify');
+	Route::post('login', [SessionsController::class, 'store'])->name('login.store')->middleware('guest');
+	Route::post('logout', [SessionsController::class, 'destroy'])->name('logout')->middleware('auth');
 
-//reset password
-Route::view('forgot-password', 'auth.request')->middleware('guest')->name('password.request');
-Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->middleware('guest')->name('password.email');
+	Route::view('register', 'register.create')->name('register.create');
+	Route::post('register', [RegistrationController::class, 'store'])->name('register.store');
 
-Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->middleware('guest')->name('password.reset');
-Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.update');
+	//email verification
+	Route::view('verify', 'register.verify')->name('register.verify');
+	Route::view('email/verify', 'register.confirm')->name('verification.notice');
 
-//admin
-Route::view('home', 'dashboard.landing-worldwide')->name('worldwide');
+	Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'show'])->name('verification.verify');
+
+	//reset password
+	Route::view('forgot-password', 'auth.request')->middleware('guest')->name('password.request');
+	Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->middleware('guest')->name('password.email');
+
+	Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->middleware('guest')->name('password.reset');
+	Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.update');
+
+	//admin
+	Route::view('home', 'dashboard.landing-worldwide')->name('worldwide')->middleware('auth');
+});
