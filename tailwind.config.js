@@ -14,7 +14,17 @@ module.exports = {
         'dark-100': '#010414',
         'brand-primary': '#2029F3',
         'system-error': '#CC1E1E',
-        'system-success': '#249E2C'
+        'brand-tertiary': '#EAD621',
+        'system-success': '#249E2C',
+        'primary-card': 'rgba(32, 43, 243, 0.11)',
+        'secondary-card': 'rgba(15, 186, 104, 0.1)',
+        'tertiary-card': 'rgba(234, 214, 33, 0.11)',
+        'background': '#E5E5E5',
+        'border': '#F6F6F7',
+        'gradient-first': '#FCFF81',
+        'gradient-second': '#C2FF9D',
+        'gradient-third': '#75A4FF',
+
       },
       boxShadow: {
         'input': '3px 3px 5px 5px #DBE8FB',
@@ -40,6 +50,7 @@ module.exports = {
         '500px': '500px',
         '450px': '450px',
         '1200px': '1200px',
+        '1600px': '1600px'
       },
       
     },
