@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/en');
 
 Route::group(['prefix' => '{language}'], function () {
-	Route::view('/', 'sessions.login')->name('login.create');
+	Route::view('/', 'sessions.login')->name('login.create')->middleware('guest');
 
 	Route::post('login', [SessionsController::class, 'store'])->name('login.store')->middleware('guest');
 	Route::post('logout', [SessionsController::class, 'destroy'])->name('logout')->middleware('auth');
@@ -42,5 +42,6 @@ Route::group(['prefix' => '{language}'], function () {
 	Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.update');
 
 	//admin
-	Route::view('home', 'dashboard.landing-worldwide')->name('worldwide')->middleware('auth');
+	Route::view('statistics/worldwide', 'dashboard.worldwide')->name('worldwide')->middleware('auth');
+	Route::view('statistics/by-country', 'dashboard.by-country')->name('by-country')->middleware('auth');
 });
