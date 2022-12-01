@@ -3,7 +3,6 @@
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SessionsController;
-use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/en');
 
 Route::group(['prefix' => '{language}'], function () {
-	Route::view('/', 'sessions.login')->name('login.create')->middleware('unauthorized');
+	Route::view('/', 'sessions.login')->name('login.create')->middleware('guest');
 
 	Route::post('login', [SessionsController::class, 'store'])->name('login.store')->middleware('guest');
 	Route::post('logout', [SessionsController::class, 'destroy'])->name('logout')->middleware('auth');
@@ -45,5 +44,4 @@ Route::group(['prefix' => '{language}'], function () {
 	//admin
 	Route::view('statistics/worldwide', 'dashboard.worldwide')->name('worldwide')->middleware('auth');
 	Route::view('statistics/by-country', 'dashboard.by-country')->name('by-country')->middleware('auth');
-	// Route::get('statistics/worldwide', [StatisticsController::class, 'index'])->name('worldwide')->middleware('auth');
 });
