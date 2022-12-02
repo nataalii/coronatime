@@ -3,19 +3,9 @@
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::redirect('/', '/en');
 
@@ -43,5 +33,5 @@ Route::group(['prefix' => '{language}'], function () {
 
 	//admin
 	Route::view('statistics/worldwide', 'dashboard.worldwide')->name('worldwide')->middleware('auth');
-	Route::view('statistics/by-country', 'dashboard.by-country')->name('by-country')->middleware('auth');
+	Route::get('statistics/by-country', [StatisticsController::class, 'store'])->name('by-country')->middleware('auth');
 });

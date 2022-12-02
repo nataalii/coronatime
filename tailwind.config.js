@@ -52,6 +52,9 @@ module.exports = {
         '1200px': '1200px',
         '1600px': '1600px'
       },
+      margin: {
+        '2px': '2px'
+      }
       
     },
   },
