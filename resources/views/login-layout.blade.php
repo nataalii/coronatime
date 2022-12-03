@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class=" hidden flex-1 lg:block relative ">
-          <img class="object-cover h-full w-full right-0 absolute" src="/images/background.png" alt="background-image" >
+          <img class="object-cover h-screen right-0 absolute" src="/images/background.png" alt="background-image" >
         </div>
       </div>
     

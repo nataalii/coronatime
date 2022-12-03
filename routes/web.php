@@ -32,6 +32,6 @@ Route::group(['prefix' => '{language}'], function () {
 	Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.update');
 
 	//admin
-	Route::view('statistics/worldwide', 'dashboard.worldwide')->name('worldwide')->middleware('auth');
+	Route::get('statistics/worldwide', [StatisticsController::class, 'dashboardInfo'])->name('worldwide')->middleware('auth');
 	Route::get('statistics/by-country', [StatisticsController::class, 'store'])->name('by-country')->middleware('auth');
 });

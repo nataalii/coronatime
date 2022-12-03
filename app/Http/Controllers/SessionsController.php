@@ -13,14 +13,14 @@ class SessionsController extends Controller
 	{
 		$user = User::where('username', $request->username)->first();
 		$isPasswordTrue = Hash::check($request->password, $user->password);
-
 		if ($user->hasVerifiedEmail() && auth()->attempt($request->only(['username', 'password']), $request->remember_me) && $isPasswordTrue)
 		{
 			session()->regenerate();
 			return redirect(route('worldwide'));
 		}
 		throw ValidationException::withMessages([
-			'password'    => __('Enter Valid Password'),
+			'username'    => __('Inocrrect  Credentials'),
+			'password'    => __('Inocrrect  Credentials'),
 		]);
 	}
 

@@ -31,8 +31,8 @@ class GetStatisticsCommand extends Command
 			$statistics = (array)$statistics;
 
 			Statistics::updateOrCreate(
+				['code'      => $country['code']],
 				[
-					'code'      => $country['code'],
 					'name'      => json_encode($name),
 					'confirmed' => $statistics['confirmed'],
 					'deaths'    => $statistics['deaths'],

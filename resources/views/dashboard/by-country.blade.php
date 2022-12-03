@@ -10,23 +10,29 @@
         </div>
     </div>
     
-    <div class="mt-9">
-        <input type="text" name="search" placeholder="{{ __('Search by country') }}" class="pl-14 py-3 w-60 rounded-lg border-dark-20"> 
+    <form class="mt-9"  action="{{ url(app()->getLocale().'/statistics/by-country') }}">
+        <input type="text" name="query" value="{{ request('query') }}" placeholder="{{ __('Search by country') }}" class="pl-14 py-3 w-60 rounded-lg border-dark-20"> 
         <img src="{{ asset('images/search-icon.svg') }}" alt="Search icon" class="-mt-9 ml-6 w-5">
-    </div>
+    </form>
     <div class="bg-white py-14 rounded-md w-full">
         <div class=" flex items-center justify-between pb-6">
-            <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+            <div class="inline-block min-w-full shadow rounded-lg overflow-y-scroll h-550px">
                 <table class="min-w-full leading-normal h-full">
                     <thead class="h-14">
-                        <tr>
-                            <x-dashboard.t-head name=Location/>
-                            <x-dashboard.t-head name="New cases"/>
-                            <x-dashboard.t-head name="Deaths"/>
-                            <x-dashboard.t-head name=Recovered/>
+                        <tr class="sticky top-0 ">
+                            <x-dashboard.t-head column="name->{{ app()->getLocale() }}" name=Location/>
+                            <x-dashboard.t-head column="confirmed" name="New cases"/>
+                            <x-dashboard.t-head column="deaths" name="Deaths"/>
+                            <x-dashboard.t-head column="recovered" name=Recovered/>
                         </tr>
                     </thead>
-                    <tbody class=" overflow-y-auto h-96">
+                    <tbody>
+                        <tr>
+                            <x-dashboard.t-body name="Worldwide" />
+                            <x-dashboard.t-body name="{{ $countries->sum('confirmed') }}" />
+                            <x-dashboard.t-body name="{{ $countries->sum('deaths') }}" />
+                            <x-dashboard.t-body name="{{ $countries->sum('recovered') }}" />
+                        </tr>
                         @foreach ($countries as $country )
                         <tr>
                             <x-dashboard.t-body name="{{ json_decode($country->name, true)[app()->getLocale()] }}"/>

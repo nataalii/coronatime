@@ -6,7 +6,6 @@ use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StoreResetPasswordRequest;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
@@ -23,11 +22,11 @@ class ResetPasswordController extends Controller
 		 : back()->withErrors(['email' => __($status)]);
 	}
 
-	public function showResetForm(Request $request, $token)
+	public function showResetForm(Request $request)
 	{
 		return view('auth.reset-password', [
 			'email' => $request->email,
-			'token' => $token,
+			'token' => $request->token,
 		]);
 	}
 
@@ -38,7 +37,7 @@ class ResetPasswordController extends Controller
 			$request->only('email', 'password', 'password_confirmation', 'token'),
 			function ($user, $password) {
 				$user->forceFill([
-					'password' => Hash::make($password),
+					'password' => $password,
 				])->setRememberToken(Str::random(60));
 				$user->save();
 				event(new PasswordReset($user));
