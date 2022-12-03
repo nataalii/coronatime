@@ -27,7 +27,6 @@ class StatisticsController extends Controller
 
 		return view('dashboard.by-country', [
 			'countries' => $countries,
-			'direction' => $sort_order,
 		]);
 	}
 }
