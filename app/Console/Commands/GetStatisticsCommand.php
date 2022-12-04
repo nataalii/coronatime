@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class GetStatisticsCommand extends Command
 {
-	protected $signature = 'statistics:get';
+	protected $signature = 'coronatime:get-statistics';
 
 	protected $description = 'This command fetches api and seeds statistics table in database ';
 
