@@ -6,7 +6,7 @@
   <h3 class="text-xl text-dark-60 mt-4">{{ __('text.required_info') }}</h3>
 </div>
 <div class="mt-8">
-  <form  method="POST" action="{{ route('register.store') }}" class="space-y-7 w-450px">
+  <form  method="POST" action="{{ route('register.store') }}" class="space-y-7 w-400px">
     @csrf
     <div class="space-y-1">
       <label for="username" class="block text-xs font-bold text-dark-100">{{ __('text.username') }}</label>

@@ -11,7 +11,7 @@
         <h2 class=" font-black text-3xl tracking-tight text-gray-900">{{ __('text.reset_password') }}</h2>
      </div>
      <div>
-     <form  method="POST" action="{{ route('password.email') }}" class=" space-y-14 w-450px text-left">
+     <form  method="POST" action="{{ route('password.email') }}" class=" space-y-14 w-400px text-left">
        @csrf
         <div class="space-y-1">
           <label for="email" class="block text-xs font-bold text-darks-100">{{ __('text.email') }}</label>

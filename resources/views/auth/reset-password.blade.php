@@ -6,7 +6,7 @@
         <h2 class=" font-black text-3xl tracking-tight text-gray-900">{{ __('text.reset_password') }}</h2>
      </div>
      <div>
-     <form method="POST" action="{{ route('password.update') }}" class=" space-y-10 w-450px text-left">
+     <form method="POST" action="{{ route('password.update') }}" class=" space-y-10 w-400px text-left">
        @csrf
        <input type="hidden" name="token" value="{{ $token }}">
        <div class="hidden">

@@ -48,10 +48,18 @@ module.exports = {
       width: {
         '700px': '700px',
         '500px': '500px',
-        '450px': '450px',
+        '400px': '400px',
         '1200px': '1200px',
         '1600px': '1600px'
       },
+
+      height:{
+        '550px': '550px',
+      },
+
+      margin: {
+        '2px': '2px'
+      }
       
     },
   },

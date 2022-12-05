@@ -15,21 +15,21 @@
             <div class="m-auto text-center space-y-5">
                 <img src="{{ asset('images/statistics/new.svg') }}" alt="new cases image" class=" m-auto">
                 <p class="font-medium">New cases</p>
-                <h1 class=" font-extrabold text-5xl text-brand-primary">715,656</h1>
+                <h1 class=" font-extrabold text-5xl text-brand-primary">{{ number_format($worldwideData->sum('confirmed')) }}</h1>
             </div>
         </div>
         <div class=" w-500px h-72 bg-secondary-card flex flex-col justify-center content-center rounded-xl ">
             <div class="m-auto text-center space-y-5">
                 <img src="{{ asset('images/statistics/recovered.svg') }}" alt="new cases image" class=" m-auto">
                 <p class="font-medium">Recovered</p>
-                <h1 class=" font-extrabold text-5xl text-system-success">715,656</h1>
+                <h1 class=" font-extrabold text-5xl text-system-success">{{ number_format($worldwideData->sum('recovered')) }}</h1>
             </div>
         </div>
         <div class=" w-500px h-72 bg-tertiary-card flex flex-col justify-center content-center rounded-xl ">
             <div class="m-auto text-center space-y-5">
                 <img src="{{ asset('images/statistics/death.svg') }}" alt="new cases image" class=" m-auto">
                 <p class="font-medium">Death</p>
-                <h1 class=" font-extrabold text-5xl text-brand-tertiary">715,656</h1>
+                <h1 class=" font-extrabold text-5xl text-brand-tertiary">{{ number_format($worldwideData->sum('deaths') )}}</h1>
             </div>
 
         </div>
