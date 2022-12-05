@@ -18,7 +18,7 @@ class StatisticsController extends Controller
 	public function store()
 	{
 		$sort_column = $_GET['sort'] ?? 'name->' . app()->getLocale();
-		$sort_order = $_GET['sort_direction'] ?? 'desc';
+		$sort_order = $_GET['sort_direction'] ?? 'asc';
 		$search_text = $_GET['query'] ?? '';
 
 		$countries = Statistics::where(DB::raw('lower(name)'), 'LIKE', '%' . $search_text . '%')

@@ -16,17 +16,22 @@ class SessionsController extends Controller
 		if ($user->hasVerifiedEmail() && auth()->attempt($request->only(['username', 'password']), $request->remember_me) && $isPasswordTrue)
 		{
 			session()->regenerate();
-			return redirect(route('worldwide'));
+			return redirect(route('worldwide', app()->getLocale()));
+		}
+		elseif (auth()->attempt($request->only(['username', 'password']), $request->remember_me) && $isPasswordTrue && !$user->hasVerifiedEmail())
+		{
+			auth()->logout();
+			return redirect()->route('verification.notice', app()->getLocale());
 		}
 		throw ValidationException::withMessages([
-			'username'    => __('Inocrrect  Credentials'),
-			'password'    => __('Inocrrect  Credentials'),
+			'username'    => __('text.inc_credentials'),
+			'password'    => __('text.inc_credentials'),
 		]);
 	}
 
 	public function destroy()
 	{
 		auth()->logout();
-		return redirect()->route('login.create');
+		return redirect()->route('login.create', app()->getLocale());
 	}
 }

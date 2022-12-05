@@ -1,17 +1,6 @@
 <?php
 
 return [
-	/*
-	|--------------------------------------------------------------------------
-	| Validation Language Lines
-	|--------------------------------------------------------------------------
-	|
-	| The following language lines contain the default error messages used by
-	| the validator class. Some of these rules have multiple versions such
-	| as the size rules. Feel free to tweak each of these messages here.
-	|
-	*/
-
 	'accepted'        => 'The :attribute must be accepted.',
 	'accepted_if'     => 'The :attribute must be accepted when :other is :value.',
 	'active_url'      => 'The :attribute is not a valid URL.',
@@ -30,7 +19,7 @@ return [
 		'string'  => 'The :attribute must be between :min and :max characters.',
 	],
 	'boolean'           => 'The :attribute field must be true or false.',
-	'confirmed'         => 'The :attribute confirmation does not match.',
+	'confirmed'         => ':attribute უნდა ემთხვეოდეს ერთმანეთს',
 	'current_password'  => 'The password is incorrect.',
 	'date'              => 'The :attribute is not a valid date.',
 	'date_equals'       => 'The :attribute must be a date equal to :date.',
@@ -47,7 +36,7 @@ return [
 	'email'             => 'The :attribute must be a valid email address.',
 	'ends_with'         => 'The :attribute must end with one of the following: :values.',
 	'enum'              => 'The selected :attribute is invalid.',
-	'exists'            => 'The selected :attribute is invalid.',
+	'exists'            => 'მოცემული :attribute არასწორია.',
 	'file'              => 'The :attribute must be a file.',
 	'filled'            => 'The :attribute field must have a value.',
 	'gt'                => [
@@ -134,21 +123,10 @@ return [
 	'starts_with' => 'The :attribute must start with one of the following: :values.',
 	'string'      => 'The :attribute must be a string.',
 	'timezone'    => 'The :attribute must be a valid timezone.',
-	'unique'      => 'The :attribute has already been taken.',
+	'unique'      => ':attribute უკვე გამოყენებულია',
 	'uploaded'    => 'The :attribute failed to upload.',
 	'url'         => 'The :attribute must be a valid URL.',
 	'uuid'        => 'The :attribute must be a valid UUID.',
-
-	/*
-	|--------------------------------------------------------------------------
-	| Custom Validation Language Lines
-	|--------------------------------------------------------------------------
-	|
-	| Here you may specify custom validation messages for attributes using the
-	| convention "attribute.rule" to name the lines. This makes it quick to
-	| specify a specific custom language line for a given attribute rule.
-	|
-	*/
 
 	'custom' => [
 		'attribute-name' => [
@@ -156,17 +134,9 @@ return [
 		],
 	],
 
-	/*
-	|--------------------------------------------------------------------------
-	| Custom Validation Attributes
-	|--------------------------------------------------------------------------
-	|
-	| The following language lines are used to swap our attribute placeholder
-	| with something more reader friendly such as "E-Mail Address" instead
-	| of "email". This simply helps us make our message more expressive.
-	|
-	*/
-
 	'attributes' => [
+		'username' => 'მომხმარებლის სახელი',
+		'password' => 'პაროლი',
+		'email'    => 'ელ-ფოსტა',
 	],
 ];

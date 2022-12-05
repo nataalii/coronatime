@@ -2,11 +2,11 @@
 @section('content')
 
 <div class="mt-9">
-  <h2 class="text-3xl font-black tracking-tight text-gray-900">{{ __('text.welcome_to') }}</h2>
-  <h3 class="text-xl text-dark-60 mt-4">{{ __('text.required_info') }}</h3>
+  <h2 class=" text-2xl lg:text-3xl font-black tracking-tight text-gray-900">{{ __('text.welcome_to') }}</h2>
+  <h3 class=" text-base lg:text-xl text-dark-60 mt-4">{{ __('text.required_info') }}</h3>
 </div>
 <div class="mt-8">
-  <form  method="POST" action="{{ route('register.store') }}" class="space-y-7 w-400px">
+  <form  method="POST" action="{{ route('register.store', app()->getLocale()) }}" class="space-y-7 sm:w-340px lg:w-400px">
     @csrf
     <div class="space-y-1">
       <label for="username" class="block text-xs font-bold text-dark-100">{{ __('text.username') }}</label>
@@ -42,7 +42,7 @@
         </button>
       </div>
       <p class=" text-center text-dark-60">{{ __('text.already_account') }}
-        <a href="{{ route('login.create') }}" class="text-dark-100 font-black">{{ __('text.login') }}</a>
+        <a href="{{ route('login.create', app()->getLocale()) }}" class="text-dark-100 font-black">{{ __('text.login') }}</a>
       </p>
 
 
