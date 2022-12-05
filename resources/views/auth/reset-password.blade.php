@@ -1,12 +1,12 @@
 @extends('confirmation-layout')
 @section('slot')
 
-<div class="mt-44">
+<div class=" mt-10 lg:mt-44">
     <div>
-        <h2 class=" font-black text-3xl tracking-tight text-gray-900">{{ __('text.reset_password') }}</h2>
+        <h2 class=" font-black text-xl lg:text-3xl tracking-tight text-gray-900">{{ __('text.reset_password') }}</h2>
      </div>
      <div>
-     <form method="POST" action="{{ route('password.update') }}" class=" space-y-10 w-400px text-left">
+     <form method="POST" action="{{ route('password.update', app()->getLocale()) }}" class=" space-y-10 w-340px lg:w-400px text-left">
        @csrf
        <input type="hidden" name="token" value="{{ $token }}">
        <div class="hidden">
@@ -30,7 +30,7 @@
         <x-error name=password/>
       </div>
         <div>
-            <button type="submit" class=" mt-5 h-14 flex w-full justify-center rounded-md bg-grn py-2 px-4 font-bold pt-4 text-white shadow-xs focus:outline-none focus:ring-2 ">
+            <button type="submit" class=" mt-72 mb-6 lg:mt-5 h-14 flex w-full justify-center rounded-md bg-grn py-2 px-4 font-bold pt-4 text-white shadow-xs focus:outline-none focus:ring-2 ">
               {{__("text.save_changes")  }}
             </button>
           </div>

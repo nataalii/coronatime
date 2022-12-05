@@ -18,6 +18,6 @@ class VerificationController extends Controller
 			$user->save();
 		}
 
-		return redirect(route('register.verify'));
+		return redirect(route('register.verify', app()->getLocale()));
 	}
 }

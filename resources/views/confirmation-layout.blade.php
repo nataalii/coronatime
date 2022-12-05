@@ -10,9 +10,9 @@
 <body class="font-inter">
     <div class="flex justify-top flex-col h-full w-screen mt-10">
         <div>
-            <img src="/images/coronatime.svg" alt="coronatime-image" class="m-auto">
+            <img src="/images/coronatime.svg" alt="coronatime-image" class=" ml-6 lg:m-auto">
         </div>
-        <div class="text-center m-auto">
+        <div class="text-center mx-auto">
             @yield('slot')
         </div>
     </div>

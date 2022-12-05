@@ -2,17 +2,18 @@
 
 
 <th
-    class="px-5 py-3 bg-border text-left text-dark-100 text-sm font-semibold tracking-wider relative">
+    class="px-1 lg:px-5 py-3 bg-border text-left text-dark-100 text-sm font-semibold tracking-wider relative">
     <div class="flex">
         
         @php
             $query = request()->query();
 		    $query['sort'] = $column;
+		    $query['language'] = app()->getLocale();
             $direction = $query['sort_direction'] ?? '';
             $query['sort_direction'] = $direction == 'desc' ? 'asc' : 'desc' ;
         @endphp
 
-        <a href="{{ route("by-country",$query) }}">{{ $name }}
+        <a href="{{ route("by-country",  $query) }}">{{ $name }}
         
         </a>
 

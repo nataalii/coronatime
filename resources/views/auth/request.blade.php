@@ -1,17 +1,17 @@
 @extends('confirmation-layout')
 @section('slot')
-<div class="mt-44">
+<div class=" mt-10 lg:mt-44">
     <div>
         @if (session('status'))
-        <div class=" text-system-success my-9 ">
+        <div class=" absolute text-system-success my-10">
           {{ session('status') }}
         </div>
           
         @endif
-        <h2 class=" font-black text-3xl tracking-tight text-gray-900">{{ __('text.reset_password') }}</h2>
+        <h2 class=" font-black text-2xl lg:text-3xl tracking-tight text-gray-900">{{ __('text.reset_password') }}</h2>
      </div>
      <div>
-     <form  method="POST" action="{{ route('password.email') }}" class=" space-y-14 w-400px text-left">
+     <form  method="POST" action="{{ route('password.email', app()->getLocale()) }}" class=" space-y-14 w-340px lg:w-400px text-left">
        @csrf
         <div class="space-y-1">
           <label for="email" class="block text-xs font-bold text-darks-100">{{ __('text.email') }}</label>
@@ -26,7 +26,7 @@
           
         </div>
         <div>
-            <button type="submit" class=" mt-5 h-14 flex w-full justify-center rounded-md bg-grn py-2 px-4 font-bold pt-4 text-white shadow-xs focus:outline-none focus:ring-2 ">
+            <button type="submit" class=" mt-96 lg:mt-5 h-14 flex w-full justify-center rounded-md bg-grn py-2 px-4 font-bold pt-4 text-white shadow-xs focus:outline-none focus:ring-2 ">
                {{__("text.reset_password")  }}
             </button>
           </div>

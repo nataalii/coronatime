@@ -16,6 +16,6 @@ class RegistrationController extends Controller
 		event(new Registered($user));
 		$user->save();
 
-		return redirect(route('verification.notice'));
+		return redirect(route('verification.notice', app()->getLocale()));
 	}
 }
