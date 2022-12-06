@@ -12,7 +12,7 @@ class SessionsController extends Controller
 		$login = $request->input('login');
 		$field_type = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 		$request->merge([$field_type => $request->input('login')]);
-		$user = User::where('username', request()->login)->orWhere('email', request()->login)->first();
+		$user = User::where($field_type, request()->login)->first();
 
 		if ($user && $user->hasVerifiedEmail() && auth()->attempt($request->only([$field_type, 'password']), $user->remember_me))
 		{
