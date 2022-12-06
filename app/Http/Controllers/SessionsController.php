@@ -14,7 +14,7 @@ class SessionsController extends Controller
 		$request->merge([$field_type => $request->input('login')]);
 		$user = User::where($field_type, request()->login)->first();
 
-		if ($user && $user->hasVerifiedEmail() && auth()->attempt($request->only([$field_type, 'password']), $user->remember_me))
+		if ($user && $user->hasVerifiedEmail() && auth()->attempt($request->only([$field_type, 'password']), $request->remember_me))
 		{
 			session()->regenerate();
 			return redirect(route('worldwide', app()->getLocale()));
