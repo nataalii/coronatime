@@ -9,10 +9,10 @@
  <form  method="POST" id="form" action="{{ route('login.store', app()->getLocale()) }}" class="space-y-6 sm:w-340px lg:w-400px">
    @csrf
     <div class="space-y-1">
-      <label for="username" class="block text-xs font-bold text-dark-100">{{ __('text.username') }}</label>
-      <x-input name=username type=text placeholder="{{ __('text.username_placeholder') }}" err=username id="username" />
-      <x-success name=username/>
-      <x-error name=username/> 
+      <label for="login" class="block text-xs font-bold text-dark-100">{{ __('text.username') }}</label>
+      <x-input name=login type=text placeholder="{{ __('text.username_or_email') }}" err="login" id="login"/>
+      <x-success name="login"/>
+      <x-error name="login"/> 
       
     </div>
    <div class="space-y-1">

@@ -9,7 +9,7 @@ class Kernel extends ConsoleKernel
 {
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('statistics:get')->daily();
+		$schedule->command('coronatime:get-statistics')->daily();
 	}
 
 	protected function commands()

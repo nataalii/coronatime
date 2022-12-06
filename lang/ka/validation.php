@@ -33,7 +33,7 @@ return [
 	'distinct'          => 'The :attribute field has a duplicate value.',
 	'doesnt_end_with'   => 'The :attribute may not end with one of the following: :values.',
 	'doesnt_start_with' => 'The :attribute may not start with one of the following: :values.',
-	'email'             => 'The :attribute must be a valid email address.',
+	'email'             => ' :attribute უნდა იყოს ვალიდური',
 	'ends_with'         => 'The :attribute must end with one of the following: :values.',
 	'enum'              => 'The selected :attribute is invalid.',
 	'exists'            => 'მოცემული :attribute არასწორია.',
@@ -138,5 +138,6 @@ return [
 		'username' => 'მომხმარებლის სახელი',
 		'password' => 'პაროლი',
 		'email'    => 'ელ-ფოსტა',
+		'login'    => 'მომხმარებლის სახელი ან მეილი',
 	],
 ];
