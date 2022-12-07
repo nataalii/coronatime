@@ -12,7 +12,7 @@ Route::redirect('/', '/en');
 Route::group(['prefix' => '{language}'], function () {
 	Route::view('/', 'sessions.login')->name('login.create')->middleware('guest');
 
-	Route::post('login', [SessionsController::class, 'store'])->name('login.store')->middleware('guest');
+	Route::post('/', [SessionsController::class, 'store'])->name('login.store')->middleware('guest');
 	Route::post('logout', [SessionsController::class, 'destroy'])->name('logout')->middleware('auth');
 
 	Route::view('register', 'register.create')->name('register.create');
