@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -93,9 +94,10 @@ class AuthTest extends TestCase
 		$email = 'nata@rdbry.com';
 		$password = 'password';
 		$user = User::create([
-			'username' => 'natali',
-			'email'    => $email,
-			'password' => $password,
+			'username'          => 'natali',
+			'email'             => $email,
+			'password'          => $password,
+			'email_verified_at' => Carbon::now(),
 		]);
 		$response = $this->post('/{language}', [
 			'login'    => $email,
