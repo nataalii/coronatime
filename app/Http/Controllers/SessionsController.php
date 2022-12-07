@@ -4,29 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\user\StoreSessionsRequest;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class SessionsController extends Controller
 {
 	public function store(StoreSessionsRequest $request)
 	{
-		$user = User::where('username', $request->username)->first();
-		$isPasswordTrue = Hash::check($request->password, $user->password);
-		if ($user->hasVerifiedEmail() && auth()->attempt($request->only(['username', 'password']), $request->remember_me) && $isPasswordTrue)
+		$login = $request->input('login');
+		$field_type = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+		$request->merge([$field_type => $request->input('login')]);
+		$user = User::where($field_type, request()->login)->first();
+
+		if ($user && $user->hasVerifiedEmail() && auth()->attempt($request->only([$field_type, 'password']), $request->remember_me))
 		{
 			session()->regenerate();
 			return redirect(route('worldwide', app()->getLocale()));
 		}
-		elseif (auth()->attempt($request->only(['username', 'password']), $request->remember_me) && $isPasswordTrue && !$user->hasVerifiedEmail())
+		elseif (auth()->attempt($request->only([$field_type, 'password']), $request->remember_me) && !$user->hasVerifiedEmail())
 		{
 			auth()->logout();
 			return redirect()->route('verification.notice', app()->getLocale());
 		}
-		throw ValidationException::withMessages([
-			'username'    => __('text.inc_credentials'),
-			'password'    => __('text.inc_credentials'),
-		]);
 	}
 
 	public function destroy()

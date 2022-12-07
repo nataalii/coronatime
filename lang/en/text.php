@@ -25,6 +25,7 @@ return [
 	'email_placeholder'                 => 'Enter your email',
 	'rpt_password_placeholder'          => 'Repeat Pssword',
 	'new_password_placeholder'          => 'Enter new Password',
+	'username_or_email'                 => 'Enter username or Email',
 	'welcome_to'                        => 'Welcome to Coronatime',
 	'required_info'                     => 'Please enter required info to sign up',
 	'confirm_account'                   => 'Your account is confirmed, you can sign in',
@@ -45,4 +46,5 @@ return [
 	'enter_email'                       => 'Enter your email',
 	'send'                              => 'SEND',
 	'inc_credentials'                   => 'Incorrect credentials',
+	'log_in'                            => 'username or password',
 ];

@@ -1,7 +1,7 @@
 @extends('login-layout')
 @section('content')
 
-<div class="mt-9">
+<div class="mt-20">
   <h2 class=" text-2xl lg:text-3xl font-black tracking-tight text-gray-900">{{ __('text.welcome_to') }}</h2>
   <h3 class=" text-base lg:text-xl text-dark-60 mt-4">{{ __('text.required_info') }}</h3>
 </div>

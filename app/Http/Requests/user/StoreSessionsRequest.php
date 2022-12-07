@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\user;
 
+use App\Rules\ExistsInDatabase;
+use App\Rules\HashedPassword;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreSessionsRequest extends FormRequest
@@ -9,8 +11,8 @@ class StoreSessionsRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'username'                   => 'required|exists:users,username',
-			'password'                   => 'required',
+			'login'              => ['required', 'min:3', new ExistsInDatabase],
+			'password'           => ['required', new HashedPassword],
 		];
 	}
 }
