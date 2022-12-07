@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests\user;
 
-use App\Models\User;
 use App\Rules\ExistsInDatabase;
+use App\Rules\HashedPassword;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Hash;
 
 class StoreSessionsRequest extends FormRequest
 {
@@ -13,13 +12,7 @@ class StoreSessionsRequest extends FormRequest
 	{
 		return [
 			'login'              => ['required', 'min:3', new ExistsInDatabase],
-			'password'           => [
-				'required',
-				function ($attribute, $value, $fail) {
-					$user = User::where('username', request()->login)->orWhere('email', request()->login)->first();
-					$user && Hash::check($value, $user->password) ? true : $fail(__('text.inc_credentials'));
-				},
-			],
+			'password'           => ['required', new HashedPassword],
 		];
 	}
 }
