@@ -3,12 +3,22 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use App\Notifications\VerificationNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
 {
 	use RefreshDatabase;
+
+	use Notifiable;
+
+	public static $createUrlCallback;
+
+	public static $toMailCallback;
 
 	public function test_register_page_is_accsessable()
 	{
@@ -163,10 +173,38 @@ class RegistrationTest extends TestCase
 		);
 	}
 
+	public function test_verification_email()
+	{
+		Notification::fake();
+
+		$response = $this->post(('{language}/register'), [
+			'language'              => app()->getLocale(),
+			'username'              => 'natalia',
+			'email'                 => 'natali@redberry.com',
+			'password'              => 'nata1234',
+			'password_confirmation' => 'nata1234',
+		]);
+
+		$user = User::find(1);
+		$user->notify(new VerificationNotification($user->getEmailForVerification()));
+		Notification::assertSentTo($user, VerificationNotification::class, function ($notification) use ($user) {
+			$notification->toMail($user);
+			return true;
+		});
+
+		$this->get(route('verification.verify', [
+			'language' => app()->getLocale(),
+			'id'       => 1,
+			'email'    => Hash::make($user->email),
+			'hash'     => 'hash',
+		]))->assertRedirect(route('register.verify', app()->getLocale()));
+	}
+
 	public function test_register_should_store_new_user()
 	{
-		$response = $this->post(app()->getLocale() . ('/register'), [
-			'username'              => 'Natalia',
+		$response = $this->post(('{language}/register'), [
+			'language'              => app()->getLocale(),
+			'username'              => 'natalia',
 			'email'                 => 'natali@redberry.com',
 			'password'              => 'nata1234',
 			'password_confirmation' => 'nata1234',

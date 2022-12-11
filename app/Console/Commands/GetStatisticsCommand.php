@@ -17,17 +17,16 @@ class GetStatisticsCommand extends Command
 		$api_url = 'https://devtest.ge/countries';
 		$response = Http::get($api_url);
 		$data = json_decode($response->body());
-
 		foreach ($data as $country)
 		{
 			$country = (array)$country;
 			$name = ['en' => $country['name']->en, 'ka' => $country['name']->ka];
-
 			$statistics_response = Http::post('https://devtest.ge/get-country-statistics', [
 				'code' => $country['code'],
 			]);
 
 			$statistics = json_decode($statistics_response->body());
+
 			$statistics = (array)$statistics;
 
 			Statistics::updateOrCreate(
