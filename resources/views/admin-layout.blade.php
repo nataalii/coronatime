@@ -28,7 +28,7 @@
                     </form> 
                </div>
            </div>
-           <div x-data="{show: false}" @click.away="show =false" class="relative my-auto">
+           <div x-data="{show: false}" @click.away="show =false" class="relative my-auto lg:hidden">
                <button @click="show = ! show" >
                    <img src="{{ asset('images/dropdown.svg') }}" alt="menu">
                </button>
