@@ -24,7 +24,7 @@ Statistics information is updated everyday, synchronized by https://devtest.ge.
 
 -   [Laravel@9.x](https://laravel.com/docs/9.x) - back-end framework
 -   [Spatie Translatable](https://github.com/spatie/laravel-translatable) - package for translation
--   [TailwinUI] (https://tailwindui.com/) - for design
+-   [TailwinUI](https://tailwindui.com/) - for design
 
 #
 
@@ -36,13 +36,11 @@ Statistics information is updated everyday, synchronized by https://devtest.ge.
 git clone https://github.com/RedberryInternship/natailia-coronatime.git
 ```
 
-2\. Next step requires you to run _composer install_ in order to install all the dependencies.
+2\. Next step requires you to run _composer install_ and _npm install_ in order to install all the dependencies.
 
 ```
 composer install
 ```
-
-3\. after you have installed all the PHP dependencies, it's time to install Tailwindcss dependencies:
 
 ```
 npm install
@@ -53,8 +51,6 @@ and also:
 ```
 npm run dev
 ```
-
-in order to build your Tailwindcss and alpinejs resources.
 
 ##### Now, you should be good to go!
 
@@ -79,7 +75,7 @@ You can run Laravel's built-in development server by executing:
   php artisan serve
 ````
 
-when working on tailwindcss and alpinejs you may run:
+In order to run the dev script defined in the project’s package.json file use:
 
 ```sh
   npm run dev
