@@ -10,11 +10,11 @@
         </div>
     </div>
     
-    <form class="ml-4 mt-4 lg:mt-9"  action="{{ url(app()->getLocale().'/statistics/by-country') }}">
-        <input type="text" name="query" value="{{ request('query') }}" placeholder="{{ __('text.search') }}" class=" pl-14 py-3 w-60 rounded-lg border-dark-20"> 
+    <form class="mt-4 lg:mt-9 -ml-4 lg:ml-0"  action="{{ url(app()->getLocale().'/statistics/by-country') }}">
+        <input type="text" name="query" value="{{ request('query') }}" placeholder="{{ __('text.search') }}" class=" pl-14 py-3 w-60 rounded-lg lg:border-dark-20 border-transparent"> 
         <img src="{{ asset('images/search-icon.svg') }}" alt="Search icon" class="-mt-9 ml-6 w-5">
     </form>
-    <div class="bg-white py-10 rounded-md w-full">
+    <div class="bg-white py-5 lg:py-10 rounded-md w-full">
         <div class=" flex items-center justify-between pb-6">
             <div class="inline-block min-w-full shadow rounded-lg overflow-y-scroll h-550px">
                 <table class="min-w-full leading-normal h-full">
