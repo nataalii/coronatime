@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\user\StoreSessionsRequest;
+use App\Http\Requests\StoreSessionsRequest;
 use App\Models\User;
 
 class SessionsController extends Controller
