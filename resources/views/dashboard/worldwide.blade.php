@@ -34,18 +34,6 @@
        </div>
    </div>
  
-   <div class="hidden lg:block bg-gradient-to-tl from-gradient-third via-gradient-second to-gradient-first w-full h-64 mt-20 rounded-lg">
-       <div class="flex flex-col justify-center content-center text-center space-y-5 p-10">
-           <h2 class="font-black text-2xl">{{ __('text.notified') }}</h2>
-           <h3>{{ __('text.personalised_notifications') }}</h3>
-           <div class=" m-auto relative">
-               <img src="{{ asset('images/search-icon.svg') }}" alt="search icon" class="absolute top-6 left-6">
-               <input type="text" placeholder="{{ __('text.enter_email') }}" class=" w-450px border-none rounded-full p-5 pl-16  ">
-               <button class="border-none bg-grn p-3 rounded-full text-white w-28 font-black absolute top-2 right-3">{{ __('text.send') }}</button>
-           </div>
-       </div>
- 
-   </div>
 </div>
  
 @endsection

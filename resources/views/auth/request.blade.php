@@ -2,12 +2,6 @@
 @section('slot')
 <div class=" mt-10 lg:mt-44">
     <div>
-        @if (session('status'))
-        <div class=" absolute text-system-success my-10">
-          {{ session('status') }}
-        </div>
-          
-        @endif
         <h2 class=" font-black text-2xl lg:text-3xl tracking-tight text-gray-900">{{ __('text.reset_password') }}</h2>
      </div>
      <div>
@@ -26,7 +20,7 @@
           
         </div>
         <div>
-            <button type="submit" class=" mt-96 lg:mt-5 h-14 flex w-full justify-center rounded-md bg-grn py-2 px-4 font-bold pt-4 text-white shadow-xs focus:outline-none focus:ring-2 ">
+            <button type="submit" class="fixed lg:static w-340px bottom-10 lg:mt-5 h-14 flex lg:w-full justify-center rounded-md bg-grn py-2 px-4 font-bold pt-4 text-white shadow-xs focus:outline-none focus:ring-2 ">
                {{__("text.reset_password")  }}
             </button>
           </div>

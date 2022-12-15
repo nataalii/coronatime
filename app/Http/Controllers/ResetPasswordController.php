@@ -18,7 +18,7 @@ class ResetPasswordController extends Controller
 			$request->only('email')
 		);
 		return $status === Password::RESET_LINK_SENT
-		? back()->with(['status' => __($status)])
+		? redirect(route('verification.notice', app()->getLocale()))
 		 : back()->withErrors(['email' => __($status)]);
 	}
 

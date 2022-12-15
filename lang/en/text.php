@@ -32,7 +32,7 @@ return [
 	'confirmation_email'                => 'We have sent you a confirmation email',
 	'reset_password'                    => 'Reset Password',
 	'save_changes'                      => 'SAVE CHANGES',
-	'password_updated'                  => 'Your password has been updeted successfully',
+	'password_updated'                  => 'Your password has been updated successfully',
 	'worldwide'                         => 'Worldwide',
 	'world_statistics'                  => 'Worldwide Statistics',
 	'by_country'                        => 'By country',
