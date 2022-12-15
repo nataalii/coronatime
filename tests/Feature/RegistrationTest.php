@@ -22,14 +22,14 @@ class RegistrationTest extends TestCase
 
 	public function test_register_page_is_accsessable()
 	{
-		$response = $this->get(app()->getLocale() . ('/register'));
+		$response = $this->get(route('register.create', [app()->getLocale()]));
 		$response->assertSuccessful();
 		$response->assertViewIs('register.create');
 	}
 
 	public function test_register_should_return_errors_if_input_is_not_provided()
 	{
-		$response = $this->post(app()->getLocale() . ('/register'));
+		$response = $this->post(route('register.create', [app()->getLocale()]));
 		$response->assertSessionHasErrors(
 			[
 				'username',
@@ -41,7 +41,7 @@ class RegistrationTest extends TestCase
 
 	public function test_register_should_return_username_error_if_username_input_is_not__provided()
 	{
-		$response = $this->post(app()->getLocale() . ('/register'), [
+		$response = $this->post(route('register.create', [app()->getLocale()]), [
 			'email'                 => 'nata@redberry.com',
 			'password'              => 'password',
 			'password_confirmation' => 'password',
@@ -55,7 +55,7 @@ class RegistrationTest extends TestCase
 
 	public function test_register_should_return_username_error_if_username_input_is_less_than_three_characters()
 	{
-		$response = $this->post(app()->getLocale() . ('/register'), [
+		$response = $this->post(route('register.create', [app()->getLocale()]), [
 			'username'              => 'na',
 			'email'                 => 'nata@redberry.com',
 			'password'              => 'password',
@@ -78,7 +78,7 @@ class RegistrationTest extends TestCase
 			'password' => bcrypt($password),
 		]);
 
-		$response = $this->post('{language}/register', [
+		$response = $this->post(route('register.create', [app()->getLocale()]), [
 			'username'              => $name,
 			'email'                 => 'test2@redberry.ge',
 			'password'              => 'password',
@@ -94,7 +94,7 @@ class RegistrationTest extends TestCase
 
 	public function test_register_should_return_email_error_if_email_input_is_not_provided()
 	{
-		$response = $this->post(app()->getLocale() . ('/register'), [
+		$response = $this->post(route('register.create', [app()->getLocale()]), [
 			'username'              => 'nata',
 			'password'              => 'password',
 			'password_confirmation' => 'password',
@@ -116,7 +116,7 @@ class RegistrationTest extends TestCase
 			'password' => bcrypt($password),
 		]);
 
-		$response = $this->post('{language}/register', [
+		$response = $this->post(route('register.create', [app()->getLocale()]), [
 			'username'              => 'natalia',
 			'email'                 => $email,
 			'password'              => 'password',
@@ -132,7 +132,7 @@ class RegistrationTest extends TestCase
 
 	public function test_register_should_return_password_error_if_password_and_password_confirmation_is_not_provided()
 	{
-		$response = $this->post(app()->getLocale() . ('/register'), [
+		$response = $this->post(route('register.create', [app()->getLocale()]), [
 			'username'              => 'nata',
 			'email'                 => 'nata@redberry.com',
 		]);
@@ -145,7 +145,7 @@ class RegistrationTest extends TestCase
 
 	public function test_register_should_return_password_error_if_password_and_password_confirmation_is_less_than_three_characters()
 	{
-		$response = $this->post(app()->getLocale() . ('/register'), [
+		$response = $this->post(route('register.create', [app()->getLocale()]), [
 			'username'              => 'natali',
 			'email'                 => 'nata@redberry.com',
 			'password'              => '12',
@@ -160,7 +160,7 @@ class RegistrationTest extends TestCase
 
 	public function test_register_should_return_password_error_if_password_and_password_confirmation_do_not_match()
 	{
-		$response = $this->post(app()->getLocale() . ('/register'), [
+		$response = $this->post(route('register.create', [app()->getLocale()]), [
 			'username'              => 'natali',
 			'email'                 => 'nata@redberry.com',
 			'password'              => '1234',
@@ -177,8 +177,7 @@ class RegistrationTest extends TestCase
 	{
 		Notification::fake();
 
-		$response = $this->post(('{language}/register'), [
-			'language'              => app()->getLocale(),
+		$response = $this->post(route('register.create', [app()->getLocale()]), [
 			'username'              => 'natalia',
 			'email'                 => 'natali@redberry.com',
 			'password'              => 'nata1234',
@@ -202,8 +201,7 @@ class RegistrationTest extends TestCase
 
 	public function test_register_should_store_new_user()
 	{
-		$response = $this->post(('{language}/register'), [
-			'language'              => app()->getLocale(),
+		$response = $this->post(route('register.create', [app()->getLocale()]), [
 			'username'              => 'natalia',
 			'email'                 => 'natali@redberry.com',
 			'password'              => 'nata1234',

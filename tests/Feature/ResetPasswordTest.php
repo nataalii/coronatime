@@ -73,12 +73,12 @@ class ResetPasswordTest extends TestCase
 		$password = 'password1';
 
 		$response = $this
-			->post('{language}/reset-password', [
+			->post(route('password.update', [
 				'language'              => app()->getLocale(),
 				'token'                 => $token,
 				'email'                 => $this->user->email,
 				'password'              => $password,
 				'password_confirmation' => $password,
-			])->assertStatus(200);
+			]))->assertStatus(200);
 	}
 }
