@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\user;
+namespace App\Http\Requests;
 
 use App\Rules\ExistsInDatabase;
 use App\Rules\HashedPassword;

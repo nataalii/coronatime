@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Statistics;
+use App\Models\Statistic;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
@@ -29,7 +29,7 @@ class GetStatisticsCommand extends Command
 
 			$statistics = (array)$statistics;
 
-			Statistics::updateOrCreate(
+			Statistic::updateOrCreate(
 				['code'      => $country['code']],
 				[
 					'name'      => json_encode($name),
