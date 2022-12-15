@@ -2,12 +2,6 @@
 @section('slot')
 <div class=" mt-10 lg:mt-44">
     <div>
-        @if (session('status'))
-        <div class=" absolute text-system-success my-10">
-          {{ session('status') }}
-        </div>
-          
-        @endif
         <h2 class=" font-black text-2xl lg:text-3xl tracking-tight text-gray-900">{{ __('text.reset_password') }}</h2>
      </div>
      <div>
