@@ -103,7 +103,7 @@
 
     }
 
-    if(passwordConfirmationInput.value.length >= 3){
+    if(passwordConfirmationInput.value.length >= 3 && passwordConfirmationInput.value == passwordInput.value){
       passwordConfirmationInput.style.borderColor = '#249E2C'
       passwordConfirmationIcon.style.visibility = 'visible';
     } else {
