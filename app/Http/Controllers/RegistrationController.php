@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\user\StoreUserRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Statistics;
+use App\Models\Statistic;
 
 class StatisticsController extends Controller
 {
 	public function dashboardInfo()
 	{
-		$worldwideData = Statistics::all();
+		$worldwideData = Statistic::all();
 		return view('dashboard.worldwide', [
 			'worldwideData' => $worldwideData,
 		]);
@@ -21,7 +21,7 @@ class StatisticsController extends Controller
 		$search_text = $_GET['query'] ?? '';
 		$localCode = app()->getLocale();
 
-		$countries = Statistics::where('name' . '->' . $localCode, 'LIKE', '%' . $search_text . '%')
+		$countries = Statistic::where('name' . '->' . $localCode, 'LIKE', '%' . $search_text . '%')
 				->orderBy($sort_column, $sort_order)
 				->get();
 
