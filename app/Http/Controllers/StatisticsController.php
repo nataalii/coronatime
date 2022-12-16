@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Statistics;
-use Illuminate\Support\Facades\DB;
 
 class StatisticsController extends Controller
 {
@@ -20,8 +19,9 @@ class StatisticsController extends Controller
 		$sort_column = $_GET['sort'] ?? 'name->' . app()->getLocale();
 		$sort_order = $_GET['sort_direction'] ?? 'asc';
 		$search_text = $_GET['query'] ?? '';
+		$localCode = app()->getLocale();
 
-		$countries = Statistics::where(DB::raw('lower(name)'), 'LIKE', '%' . $search_text . '%')
+		$countries = Statistics::where('name' . '->' . $localCode, 'LIKE', '%' . $search_text . '%')
 				->orderBy($sort_column, $sort_order)
 				->get();
 
