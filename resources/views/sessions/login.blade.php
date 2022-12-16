@@ -35,5 +35,9 @@
    </p>
  </form>
 </div>
-
+<script>
+  function checkName(){
+    
+  }
+</script>
 @endsection
