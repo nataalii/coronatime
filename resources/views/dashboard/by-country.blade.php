@@ -16,8 +16,8 @@
     </form>
     <div class="bg-white py-5 lg:py-10 rounded-md w-full">
         <div class=" flex items-center justify-between pb-6">
-            <div class="inline-block min-w-full shadow rounded-lg overflow-y-scroll h-550px">
-                <table class="min-w-full leading-normal h-full">
+            <div class="inline-block min-w-full shadow rounded-lg overflow-y-scroll max-h-550px">
+                <table class="min-w-full ">
                     <thead class="h-14">
                         <tr class="sticky top-0 ">
                             <x-dashboard.t-head column="name->{{ app()->getLocale() }}" name="{{ __('text.location') }}"/>

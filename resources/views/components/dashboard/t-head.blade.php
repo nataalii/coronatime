@@ -16,12 +16,10 @@
         <a href="{{ route("by-country",  $query) }}">{{ $name }}
         
         </a>
-
-        <div class="mt-1 ml-2">
-            <img src="{{ asset('images/arrows/up.svg') }}" alt="arrow" >
-            <img src="{{ asset('images/arrows/down.svg') }}" alt="arrow" class="mt-2px">
-        </div>
-       
+           <div class="mt-1 ml-2 w-3">
+                <img src="{{ (request()->query('sort_direction') == 'desc' && request()->query('sort') == $column) ? asset('images/arrows/up-black.png') : asset('images/arrows/up.svg') }}" alt="arrow">
+                <img src="{{  (request()->query('sort_direction') == 'asc'&& request()->query('sort') == $column) ? asset('images/arrows/down-black.svg') : asset('images/arrows/down.svg') }}" alt="arrow"class=" mt-2px">
+           </div>
     </div>
 
 </th>
