@@ -17,7 +17,6 @@
     <div class="bg-white py-5 lg:py-10 rounded-md w-full">
         <div class=" flex items-center justify-between pb-6">
             <div class="inline-block min-w-full shadow rounded-lg overflow-y-scroll max-h-550px">
-                @if($countries->sum('confirmed'))
                     <table class="min-w-full ">
                         <thead class="h-14">
                             <tr class="sticky top-0 ">
@@ -30,9 +29,9 @@
                         <tbody>
                             <tr>
                                 <x-dashboard.t-body name="{{ __('text.worldwide') }}" />
-                                <x-dashboard.t-body name="{{ $countries->sum('confirmed') }}" />
-                                <x-dashboard.t-body name="{{ $countries->sum('deaths') }}" />
-                                <x-dashboard.t-body name="{{ $countries->sum('recovered') }}" />
+                                <x-dashboard.t-body name="{{ $confirmed }}" />
+                                <x-dashboard.t-body name="{{ $deaths }}" />
+                                <x-dashboard.t-body name="{{ $recovered }}" />
                             </tr>                            
 
                             @foreach ($countries as $country )
@@ -45,7 +44,6 @@
                             @endforeach				
                         </tbody>
                     </table>
-                @endif        
             </div>
         </div>
     </div>
