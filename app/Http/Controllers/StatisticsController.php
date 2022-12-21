@@ -25,8 +25,16 @@ class StatisticsController extends Controller
 				->orderBy($sort_column, $sort_order)
 				->get();
 
+		$statistic = Statistic::all();
+		$confirmed = $statistic->sum('confirmed');
+		$deaths = $statistic->sum('deaths');
+		$recovered = $statistic->sum('recovered');
+
 		return view('dashboard.by-country', [
 			'countries' => $countries,
+			'confirmed' => $confirmed,
+			'deaths'    => $deaths,
+			'recovered' => $recovered,
 		]);
 	}
 }

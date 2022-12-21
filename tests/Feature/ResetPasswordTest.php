@@ -37,8 +37,7 @@ class ResetPasswordTest extends TestCase
 			->post(route('password.email', ['language' => app()->getLocale()]), [
 				'email' => $this->user->email,
 			])
-			->assertSuccessful()
-			->assertSee(__('passwords.sent'));
+			->assertSuccessful();
 
 		$token = Password::createToken($this->user);
 
