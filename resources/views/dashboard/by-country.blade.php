@@ -17,33 +17,35 @@
     <div class="bg-white py-5 lg:py-10 rounded-md w-full">
         <div class=" flex items-center justify-between pb-6">
             <div class="inline-block min-w-full shadow rounded-lg overflow-y-scroll max-h-550px">
-                <table class="min-w-full ">
-                    <thead class="h-14">
-                        <tr class="sticky top-0 ">
-                            <x-dashboard.t-head column="name->{{ app()->getLocale() }}" name="{{ __('text.location') }}"/>
-                            <x-dashboard.t-head column="confirmed" name="{{ __('text.new_cases') }}"/>
-                            <x-dashboard.t-head column="deaths" name="{{ __('text.deaths') }}"/>
-                            <x-dashboard.t-head column="recovered" name="{{ __('text.recovered') }}"/>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <x-dashboard.t-body name="{{ __('text.worldwide') }}" />
-                            <x-dashboard.t-body name="{{ $countries->sum('confirmed') }}" />
-                            <x-dashboard.t-body name="{{ $countries->sum('deaths') }}" />
-                            <x-dashboard.t-body name="{{ $countries->sum('recovered') }}" />
-                        </tr>
-                        @foreach ($countries as $country )
-                        <tr>
-                            <x-dashboard.t-body name="{{ json_decode($country->name, true)[app()->getLocale()] }}"/>
-                            <x-dashboard.t-body name="{{ $country->confirmed }}"/>
-                            <x-dashboard.t-body name="{{ $country->deaths }}"/>
-                            <x-dashboard.t-body name="{{ $country->recovered }}"/>
-                        </tr>	                                
-                        @endforeach				
-                    </tbody>
-                </table>
-                        
+                @if($countries->sum('confirmed'))
+                    <table class="min-w-full ">
+                        <thead class="h-14">
+                            <tr class="sticky top-0 ">
+                                <x-dashboard.t-head column="name->{{ app()->getLocale() }}" name="{{ __('text.location') }}"/>
+                                <x-dashboard.t-head column="confirmed" name="{{ __('text.new_cases') }}"/>
+                                <x-dashboard.t-head column="deaths" name="{{ __('text.deaths') }}"/>
+                                <x-dashboard.t-head column="recovered" name="{{ __('text.recovered') }}"/>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <x-dashboard.t-body name="{{ __('text.worldwide') }}" />
+                                <x-dashboard.t-body name="{{ $countries->sum('confirmed') }}" />
+                                <x-dashboard.t-body name="{{ $countries->sum('deaths') }}" />
+                                <x-dashboard.t-body name="{{ $countries->sum('recovered') }}" />
+                            </tr>                            
+
+                            @foreach ($countries as $country )
+                            <tr>
+                                <x-dashboard.t-body name="{{ json_decode($country->name, true)[app()->getLocale()] }}"/>
+                                <x-dashboard.t-body name="{{ $country->confirmed }}"/>
+                                <x-dashboard.t-body name="{{ $country->deaths }}"/>
+                                <x-dashboard.t-body name="{{ $country->recovered }}"/>
+                            </tr>	                                
+                            @endforeach				
+                        </tbody>
+                    </table>
+                @endif        
             </div>
         </div>
     </div>
